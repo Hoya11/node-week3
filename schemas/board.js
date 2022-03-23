@@ -13,7 +13,7 @@ const boardSchema = new Schema({
   date: {
     type: Number,
   },
-  memo: {
+  comment: {
     type: String,
   },
   name: {

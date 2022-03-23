@@ -31,34 +31,25 @@
             let template_html = `
                     
                     <div class="field">
-                        <label class="label">Username</label>
-                        <div class="control has-icons-left has-icons-right">
-                            <input id="name" class="input is-success" type="text" placeholder="Text input" value="${boardDetail["name"]}">
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-user"></i>
-                            </span>
-                            <span class="icon is-small is-right">
-                                <i class="fas fa-check"></i>
-                            </span>
-                        </div>
-                        <p class="help is-success">This username is available</p>
+                        <label class="label">이름</label>
+                            <input id="name" class="input" type="text" placeholder="Text input" value="${boardDetail["name"]}">
                     </div>
                     <div class="field">
-                        <label class="label">Password</label>
+                        <label class="label">비밀번호</label>
                         <div class="control">
                             <input id="psd" class="input" type="password" placeholder="Text input">
                         </div>
                     </div>
                     <div class="field">
-                        <label class="label">Title<label>
+                        <label class="label">제목<label>
                         <div class="control">
                             <input id="title" class="input" type="text" placeholder="Text input" value="${boardDetail["title"]}">
                         </div>
                     </div>
                     <div class="field">
-                        <label class="label">Message</label>
+                        <label class="label">내용</label>
                         <div class="control">
-                            <textarea id="memo" class="textarea" placeholder="Textarea">${boardDetail["memo"]}</textarea>
+                            <textarea id="comment" class="textarea" placeholder="Textarea">${boardDetail["comment"]}</textarea>
                         </div>
                     </div>
                     <div class="field is-grouped">
@@ -76,7 +67,7 @@
       function amends() {
         let title = $("#title").val();
         let name = $("#name").val();
-        let memo = $("#memo").val();
+        let comment = $("#comment").val();
         let password = $("#psd").val();
         $.ajax({
           type: "POST",
@@ -84,7 +75,7 @@
           data: {
             title: title,
             name: name,
-            memo: memo,
+            comment: comment,
             password: password,
           },
           success: function (response) {
@@ -99,7 +90,7 @@
       function deletes() {
         let title = $("#title").val();
         let name = $("#name").val();
-        let memo = $("#memo").val();
+        let comment = $("#comment").val();
         let password = $("#psd").val();
         $.ajax({
           type: "POST",
@@ -107,7 +98,7 @@
           data: {
             title: title,
             name: name,
-            memo: memo,
+            comment: comment,
             password: password,
           },
           success: function (response) {
@@ -125,7 +116,7 @@
   <body>
     <section class="hero is-warning">
       <div class="hero-body">
-        <p class="title">Detail</p>
+        <p class="title">상세페이지</p>
       </div>
     </section>
     <section class="section">

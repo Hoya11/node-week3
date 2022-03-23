@@ -29,17 +29,12 @@
               let htmlTemp = `
                         <div class="box" onclick="location.href='/detail?boardId=${boards[i]["boardId"]}'">
                             <article class="media">
-                            <div class="media-left">
-                                <figure class="image is-64x64">
-                                <img src="https://platum.kr/wp-content/uploads/2019/12/64497335_490811004989301_7459130390851092480_n.png" alt="Image">
-                                </figure>
-                            </div>
                             <div class="media-content">
                                 <div class="content">
                                 <p>
                                     <strong>${boards[i]["name"]}</strong> <small>${boards[i]["title"]}</small> <small>${boards[i]["date"]}</small>
                                     <br>
-                                    ${boards[i]["memo"]}
+                                    ${boards[i]["comment"]}
                                 </p>
                                 </div>
                                 <nav class="level is-mobile">
@@ -76,7 +71,7 @@
   <body>
     <section class="hero is-info">
       <div class="hero-body">
-        <p class="title">Search</p>
+        <p class="title">조회 페이지</p>
       </div>
     </section>
     <section class="section">

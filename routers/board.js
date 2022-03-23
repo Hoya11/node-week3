@@ -5,7 +5,7 @@ const router = express.Router();
 router.post("/boards", async (req, res) => {
   console.log(req.body);
 
-  const { title, name, password, memo, date } = req.body;
+  const { title, name, password, comment, date } = req.body;
 
   let boardId = await Boards.find({}).sort("-boardId").limit(1);
   if (boardId.length == 0) {
@@ -14,7 +14,7 @@ router.post("/boards", async (req, res) => {
     boardId = boardId[0]["boardId"] + 1;
   }
 
-  await Boards.create({ boardId, title, name, password, memo, date });
+  await Boards.create({ boardId, title, name, password, comment, date });
 
   res.send({ result: "success" });
 });
@@ -41,13 +41,13 @@ router.get("/board/:boardId", async (req, res) => {
 router.post("/board/:boardId", async (req, res) => {
   try {
     const { boardId } = req.params;
-    const { title, name, memo, password } = req.body;
+    const { title, name, comment, password } = req.body;
     console.log(password);
 
     const isBoardInDetail = await Boards.find({ boardId, password });
 
     if (isBoardInDetail.length > 0) {
-      await Boards.updateOne({ boardId }, { $set: { title, name, memo } });
+      await Boards.updateOne({ boardId }, { $set: { title, name, comment } });
       res.send({ result: "success" });
     } else {
       res.send({ result: "비밀번호가 틀렸습니다." });
