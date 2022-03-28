@@ -48,6 +48,8 @@ router.post("/board/:boardId", async (req, res) => {
 
     if (isBoardInDetail.length > 0) {
       await Boards.updateOne({ boardId }, { $set: { title, name, comment } });
+      // updateOne함수는 함수에 검색되는 첫번째 항목의 값을 수정
+      // updateMany 함수는 일치하는 모든 조건을 수정
       res.send({ result: "success" });
     } else {
       res.send({ result: "비밀번호가 틀렸습니다." });
